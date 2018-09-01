@@ -7,6 +7,8 @@ import SecretList from './secret_list';
 import MovieQuote from './movie_quotes';
 import SignUp from './sign_up';
 import auth from '../hoc/auth';
+import SignIn from './sign_in';
+import redirect from '../hoc/redirect';
 
 const App = () => (
     <div>
@@ -16,7 +18,8 @@ const App = () => (
             <Route exact path='/about' component={About} />
             <Route exact path='/secret-list' component={auth(SecretList)} />
             <Route path='/movie-quote' component={MovieQuote} />
-            <Route exact path='/sign-up' component={SignUp} />
+            <Route exact path='/sign-up' component={redirect(SignUp, '/about')} />
+            <Route path='/sign-in' component={redirect(SignIn, '/movie-quote')} />
         </div>
     </div>
 );
